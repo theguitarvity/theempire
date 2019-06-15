@@ -5,8 +5,9 @@ import api from '../services/api';
 
 export default class Main extends Component{
     static navigationOptions = {
-        title: "Hunt", 
+        title: "The Empire", 
     };
+
     state = {
         counter:0,
         films:[],
@@ -24,7 +25,9 @@ export default class Main extends Component{
         })
     };
     renderItem = ({item}) =>(
-        <TouchableOpacity style = {styles.movieContainer}>
+        
+
+        <TouchableOpacity onPress = {()=>this.props.navigation.navigate('Info', {item:item})} style = {styles.movieContainer}>
             <Text style = {styles.titleFilm}>{item.title}</Text>
             <Text style = {styles.directorFilm} >{item.director}</Text>
             
@@ -32,6 +35,7 @@ export default class Main extends Component{
         </TouchableOpacity>
     );
     render(){
+        
         return(
             <View style={styles.container}>
                 
@@ -64,6 +68,16 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     titleFilm:{
-        fontSize:20
+        fontSize:18,
+        color: "#333",
+        fontWeight:"bold",
+
+    },
+    directorFilm:{
+        fontSize:16,
+        color:"#999",
+        marginTop:5,
+        lineHeight:24,
+        
     }
 });
